@@ -1,0 +1,288 @@
+﻿body {
+    background-color: #f9fcff;
+    text-align: center;
+    font-family: 'Apercu Pro';
+    font-size: 20px;
+    margin: 0;
+    background-image: url("https://www.transparenttextures.com/patterns/cream-pixels.png");
+}
+
+ul {
+    list-style-type: none;
+    margin-top: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: black;
+}
+
+ul li{
+    float: left;
+    width: 25%;
+    text-transform: uppercase;
+}
+
+    ul li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 20px;
+        text-decoration: none;
+    }
+
+        ul li a:hover {
+            background-color: #f9fcff;
+            transition: 0.2s;
+            color: black;
+        }
+
+        ul li a.active {
+            background-color: #8ca6de;
+            color: white;
+        }
+
+h1 {
+    margin: 0;
+    color: #fafcff;
+    padding: 60px;
+    font-size: 60px;
+    letter-spacing: 12px;
+    background-color: #729add;
+    background-image: url("https://www.transparenttextures.com/patterns/60-lines.png");
+}
+
+footer {
+    background-color: #729add;
+    color: white;
+    padding: 10px;
+    width: 25%;
+    margin: auto;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    font-size: 14px;
+    background-image: url("https://www.transparenttextures.com/patterns/60-lines.png");
+    clear: both;
+    border-radius: 50px;
+}
+
+  footer a {
+      color: #f9fcff;
+  }
+
+.resume {
+    width: 50%;
+    margin: auto;
+    padding: 10px;
+    text-align: left;
+}
+
+
+@font-face {
+    font-family: 'Apercu Pro';
+    src: url('ApercuPro.eot');
+    src: local('Apercu Pro'), local('ApercuPro'), url('ApercuPro.eot?#iefix') format('embedded-opentype'), url('ApercuPro.woff2') format('woff2'), url('ApercuPro.woff') format('woff'), url('ApercuPro.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+ol{
+    width:75%;
+    margin-left: 40px;
+    list-style-type: square;
+}
+
+ol li{
+    line-height: 35px;
+}
+
+
+h2 {
+    color: #729add;
+    margin-top: 20px;
+    padding: 10px;
+    margin-bottom: -20px;
+    margin-left: -20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 900 ;
+}
+
+h3, h4, h5, h6{
+    margin: 10px;
+}
+
+h3{
+    margin-top: 30px;
+    text-align: center;
+}
+
+.skills{
+    margin-top: 35px;
+    margin-left: -30px;
+}
+
+.education{
+    padding: 15px;
+    font-size: 120%;
+    letter-spacing: 1px;
+}
+
+img{
+    float:left;
+    margin-left: -100px;
+    padding: 30px;
+    padding-left: 50px;
+}
+
+
+.aboutme{
+    width: 70%;
+    margin: auto;
+    padding-top: 20px;
+    padding-bottom: 50px;
+    text-align: left;
+}
+
+.aboutme img{
+    padding-right:100px;
+}
+
+.aboutme p{
+    margin-top: 120px;
+    padding: 30px;
+    line-height: 30px;
+}
+
+.socials{
+    margin-left: -15px;
+}
+
+.socials img{
+    float: none;
+    padding: 50px;
+    width: 50px;
+    margin:auto;
+}
+
+dd{
+    margin-left: 60px;
+    padding: 10px;
+}
+
+dt {
+    color: #729add;
+    margin-top: 20px;
+    margin-left: 20px;
+    padding: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 27px;
+}
+
+.labs{
+    padding: 30px;
+    width: 50%;
+    margin:auto;
+    text-align: left;
+    line-height: 35px;
+}
+
+.content {
+    width: 60%;
+    margin: auto;
+    padding: 40px;
+}
+
+a {
+    color: #729add;
+}
+
+    a:visited {
+        color: #729add;
+    }
+
+.labs a{
+    color: black;
+}
+
+.content h2{
+    padding-bottom: 30px;
+    margin: 0;
+}
+
+.content p{
+    width: 90%;
+}
+
+.content img{
+    padding-right: 100px;
+}
+
+
+@media screen and (max-width:600px){
+    .nav ul li{
+        width:100%;
+    }
+
+    h1{
+        font-size: 26px;
+        letter-spacing: 8px;
+    }
+
+    .content{
+        width: 90%;
+    }
+
+    .content img{
+        margin: auto;
+        float: none;
+        margin-left: 20px;
+    }
+
+
+    .aboutme{
+        width: 90%;
+        font-size: 90%;
+        text-align: justify;
+    }
+
+    .aboutme img{
+        width: 90%;
+        margin:auto;
+        margin-left: -40px;
+    }
+
+    .resume{
+        width: 95%;
+        font-size: 85%;
+    }
+
+    .resume h2{
+        margin-left:10px;
+    }
+
+    .labs{
+        width: 90%;
+    }
+
+    .labs dd{
+        margin-left: -10px;
+        text-align: justify;
+        font-size: 95%;
+    }
+
+    .labs dt{
+        font-size:95%;
+    }
+
+    footer{
+        width:90%;
+    }
+
+    .socials img{
+    float: none;
+    padding: 25px;
+    width: 60px;
+    margin:auto;
+}
+}

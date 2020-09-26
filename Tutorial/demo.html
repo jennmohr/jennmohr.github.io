@@ -1,0 +1,639 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Angular 2.0 Tutorial</title>
+    <link rel="stylesheet" href="styleMain.css" />
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <h4>Angular 2.0 Tutorial</h4>
+        </div>
+        <ul class="nav-link">
+            <li>
+                <a href="intro.html">Home</a>
+            </li>
+            <li>
+                <a href="installation.html">Installation</a>
+            </li>
+            <li>
+                <a href="demo.html">Demo</a>
+            </li>
+            <li>
+                <a href="conclusion.html">Conclusion</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="banner">
+        <p>
+            <h3>Angular 2.0 Components</h3>
+            Angular 2 applications contain building blocks called components. 
+            An application is essentially a tree of components, all stemming off of the root component. <br><br>
+            Open the project in VS. You made a directory earlier named allergen. Within the allergen folder,
+            we have cloned the github repository named ‘Demo’. From there we are going to start our focus on the folder named app.<br><br>
+            The root component of our application is under <b>src/app/app.component.ts.</b> If you open it up, it contains the <b>template</b>, which
+            is used to render the view in the application. The template contains HTML code, binding and directives. It also contains the
+            selector, which tells the application where in the DOM the component should appear. <br><br>
+            <pre><code>@Component({
+                selector: 'my-app',
+                template: `&lt;code&gt;&lt;h1&gt;Hello {{name}}&lt;/h1&gt;&lt;/code&gt;`,
+                })</code></pre>
+               
+                The <b>app.component.ts</b> file also includes a class decorator. A class decorator includes the class name, the property name, the property type, and the value. <br><br>
+                <pre><code>export class AppComponent  { name = 'Angular'; }</code></pre>
+                The class name is AppComponent. The export keyword is used so that this component can be used in other modules. 
+                The property type is name and the value is ‘Angular’. <br><br>
+                We could give the property a name by changing the HTML within the braces of export class to {appTitle: string = ‘AllerGenius’;} When you save this, it will be automatically updated in the browser.
+
+
+        </p>
+    </div>
+
+    <div class="install">
+        <h3>Building the Web Application with Angular 2.0</h3>
+        <p>
+            Now that we know the basics and how to set up our Angular 2.0 web application, we can begin building the application. 
+We are going to load our application through a new created HTML file. Create a new typescript file in the src file called app.component.html. In this file, paste the following:
+<br><br>
+<pre><code>&lt;h1&gt;{{appTitle}}&lt;/h1&gt;</code></pre>
+</p>
+In the <b>app.component.ts</b> file, change the template line of code to:<br><br>
+<pre><code>templateUrl: ‘app/app.component.html’,</code></pre>
+This will update your page to include the html in the separate file as your template code. The website will then look like this: <br><br>
+<img  src="images/image1.png" width="500px" >
+<br><br>
+Next create a new typescript component file named<b> menuitem.component.ts. </b>Add the following to your code:<br><br>
+<pre><code>import { Component } from '@angular/core';
+
+    @Component({
+    &nbsp;&nbsp;selector: 'menu',
+    &nbsp;&nbsp;template: '&lt;h2&gt;Menu Items&lt;/h2&gt;'
+    })
+    
+    export class MenuItemComponent {
+    }
+    </code></pre>
+    To import the Menu component into our app component we need to open the <b>app.module.ts</b> file. In this file, add this code to the import section below the AppComponent import:<br><br>
+<pre><code>import { MenuItemComponent } from './menuitem.component';</code></pre>
+Also, add the MenuItemComponent to the<b> declarations </b>section of the <b>@NgModule.</b><br><br>
+<pre><code>@NgModule({
+    &nbsp;&nbsp;imports: [BrowserModule],
+    &nbsp;&nbsp;declarations: [AppComponent, MenuItemComponent],
+    &nbsp;&nbsp;bootstrap:    [ AppComponent ]
+    })
+    </code></pre>
+    Make sure to add the ‘&lt;menu&gt;&lt;/menu&gt;’ selector to the original app.component.html file, so that the menu items component is added to the page. <br><br>
+    <pre><code>&lt;h1&gt;{{appTitle}}&lt;/h1&gt;
+        &lt;menu&gt;&lt;/menu&gt;
+        </code></pre>
+        Once all of this is saved, your application will look like this: <br><br><img  src="images/image3.png" width="500px" >
+        <br><br>
+        Similar to the process we did for the template HTML for the app component, we will create a <b>menuitem.component.html </b>file and link this to our template using the code:<br><br>
+    <pre><code>  templateUrl: 'app/menuitem.component.html', </code></pre>
+    Now that we know how to set up our application using Angular 2.0, we will now implement HTML, Javascript and CSS elements that will actually allow our application to function how we want it to. 
+    </div>
+
+
+
+    <div class="install">
+        <h3>Building the Simple Application with HTML, JS and CSS</h3>
+        <p>
+            First we need to create objects that we can display on our menu. To begin, we will create a type that will represent a single menu item. In your menuitem.component.ts, paste the following: 
+            <br><br><pre><code>export interface MenuItems {
+                &nbsp;&nbsp;item: string;
+                &nbsp;&nbsp;allergens: string;
+                &nbsp;&nbsp;image: string;
+                }
+                </code></pre>
+                In our <b>MenuItemComponent</b> class, we will create an array of menu items and populate this array with information from our MenuItems interface. Add the following code within the class. These items will be substituted out later on.
+<br><br><pre><code>public myMenu: MenuItems[] = [
+
+    {item: 'sandwich', allergens: 'egg', image: 'https://lh3.googleusercontent.com/proxy/E0qlHvMd1ul7o-SpyMLZ_Nee-_UOubTY2bDkq07lzWz4M3IRAEWQME2aNDvTUyybWoyB_1T7-4Z1uwTTYH2ZFaRN7q2u_rH-rJ86R88HHca9ffUjbwV5w-ygMWZ5l0CMaRlsWYvt8zo'},
+    { item: 'salad', allergens: ‘dairy’, image: 'https://www.kindpng.com/picc/m/86-866921_transparent-fruit-salad-clipart-transparent-background-salad-png.png'},
+      
+];
+</code></pre>
+
+To display this information on our HTML page for Menu Items, we will go to the <b>menuitem.component.html</b> file and insert AngularJS and HTML code that will iterate through the array using the <b>ngFor</b> directive. We will also keep track of the index in order to individually access our elements when we need to check their allergens.
+<br><br>
+<pre><code>&lt;div class="menuItem" *ngFor="let menu of myMenu; let indexOfelement = index;"&gt;
+    &nbsp;&nbsp;&nbsp;&nbsp;&lt;img src="{{menu.image}}"&gt;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h3&gt;{{menu.item}} &lt;/h3&gt;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Allergens - {{menu.allergens}}&lt;/p&gt;
+    &lt;/div&gt;
+    </code></pre>
+    The browser window will now display each item and their allergens onto the page. <br><br><img  src="images/image2.png" width="500px"><br><br>In the HTML code for the template, add a section above the menu items and a title above the menu items to let the user know that this section is meant to manage allergens. We are going to be putting the whole manage section in a div element, and another div element nested into it that handles just the checkboxes. List the six main allergens (Dairy, Egg, Soy, Wheat, Tree Nuts, Fish) in a check box format. We are also going to attach a function to the update button, which will create an array of allergens that the user suggested. 
+<br><br>We are also going to attach a change event to checking off the check marks that will modify our allergen list later on in the tutorial.
+<br><br>
+
+<pre><code>&lt;div id="manage"&gt;
+    &nbsp;&nbsp;&nbsp;&nbsp;&lt;h2&gt;Manage Allergens&lt;/h2&gt;
+    &nbsp;&nbsp;&nbsp;&nbsp;&lt;div id="checkboxes"&gt;
+    &nbsp;&nbsp;&lt;input type="checkbox" id="dairy" (change)="selectionChange($event.srcElement, dataItem)"&gt;
+    &nbsp;&nbsp;&lt;label for="dairyCheck"&gt; Dairy&lt;/label&gt;
+    
+    &nbsp;&nbsp;&lt;input type="checkbox" id="egg" (change)="selectionChange($event.srcElement, dataItem)"&gt;
+    &nbsp;&nbsp;&lt;label for="eggCheck"&gt; Egg&lt;/label&gt;
+    
+    &nbsp;&nbsp;&lt;input type="checkbox" id="soy" (change)="selectionChange($event.srcElement, dataItem)"&gt;
+    &nbsp;&nbsp;&lt;label for="soyCheck"&gt; Soy&lt;/label&gt;
+    
+    &nbsp;&nbsp;&lt;input type="checkbox" id="wheat" (change)="selectionChange($event.srcElement, dataItem)"&gt;
+    &nbsp;&nbsp;&lt;label for="wheatCheck"&gt; Wheat&lt;/label&gt;
+    
+    &nbsp;&nbsp;&lt;input type="checkbox" id="tree nuts" (change)="selectionChange($event.srcElement, dataItem)"&gt;
+    &nbsp;&nbsp;&lt;label for="treenutsCheck"&gt; Tree Nuts&lt;/label&gt;
+    
+    &nbsp;&nbsp;&lt;input type="checkbox" id="fish" (change)="selectionChange($event.srcElement, dataItem)"&gt;
+    &nbsp;&nbsp;&lt;label for="fishCheck"&gt; Fish&lt;/label&gt;
+    &nbsp;&nbsp;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;br /&gt;
+    &lt;br /&gt;
+    &lt;br /&gt;
+    </code></pre>
+
+    After this is saved, the browser will update to look as follows: 
+    <br><br>
+    <img  src="images/image6.png" width="500px">
+    <br><br>
+    The goal of the next part of our application is to make it so when the allergens are updated, the menu items shown also update. First, we need to gather the updated allergens using the update button. This will be handled by the function we create that is attached to the change of the check boxes. Call this function <b>selectionChange()</b> and make its input an HTMLInputElement. It will return nothing. 
+<br><br>
+The <b>selectionChange()</b> function will see if the checkbox is checked off. If it is checked off, the application will add that allergen to the list of allergens stored in the component class. If it is not checked off, the application will remove that allergen from the list. 
+First, create the blank list of allergens and store it in the MenuItemComponent class.<br><br>
+<pre><code>allergensList: string[] = [];</code></pre>
+Insert the selectionChange() function into the MenuItemComponent class as well:
+<br><br>
+<pre><code>selectionChange(input: HTMLInputElement) {
+    &nbsp;&nbsp;if (input.checked === true) {
+    &nbsp;&nbsp;&nbsp;this.allergensList.push(input.id);
+    &nbsp;&nbsp;} else {
+    &nbsp;&nbsp;&nbsp;&nbsp;this.allergensList.splice(this.allergensList.indexOf(input.id), 1);
+    &nbsp;&nbsp;}
+    &nbsp;}
+    </code></pre>
+    Optional: To test if your list is working, you can insert alert buttons that will contain the updated array once you select or deselect a checkbox. This isn’t recommended for the final application, but is a good step to make sure the program is working up to this point. Add the following to your function at the end of the code, after the if/else statements:
+       <br><br>
+       <pre><code>alert(this.allergensList.toString());</code></pre>
+       After selecting the soy, wheat, and tree nuts checkbox, this alert will appear:<br><br><img  src="images/image4.png" width="500px"><br><br>
+       Next, we will build the items that will be displayed. We want to add at least three restaurants to the application. To begin, create three buttons that will represent how the user can choose which restaurant they want to view. These buttons will have click events attached to them, <b>setRestaurant()</b>, with an input of the restaurant name.
+       <br><br><pre><code>&lt;div id="manage"&gt;
+        &nbsp;&lt;h2&gt;Choose Restaurant&lt;/h2&gt;
+        &nbsp;&lt;button type="submit" class="rest" (click)="setRestaurant('ChickFilA')"&gt;Chick Fil A&lt;/button&gt;
+        &nbsp;&lt;button type="submit" class="rest" (click)="setRestaurant('McDonalds')"&gt;McDonald's&lt;/button&gt;
+        &nbsp;&lt;button type="submit" class="rest" (click)="setRestaurant('PandaExpress')"&gt;Panda Express&lt;/button&gt;
+        &lt;/div&gt;
+        </code></pre>
+        In the menuitem.component.ts file, under the MenuItemComponent class, create three booleans that represent each restaurant. These booleans will keep track of which restaurant was selected to be displayed.<br><br>
+        <pre><code>
+            chickFilA: boolean;
+            mcDonalds: boolean;
+            pandaExpress: boolean;
+          </code></pre>
+
+          The <b>setRestaurant() </b>function we attached to our buttons will also be stored in the MenuItemComponent class. The function has an input of the restaurant name as a string and corresponds to which button was selected. The function checks which restaurant was passed and sets the corresponding boolean of that restaurant to true, and the other two restaurants boolean values to false. 
+<br><br>
+<pre><code>setRestaurant(restaurant: string){
+
+    &nbsp;&nbsp;&nbsp;&nbsp;if (restaurant == "ChickFilA") {
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.chickFilA = true;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.mcDonalds = false;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.pandaExpress = false;
+    &nbsp;&nbsp;&nbsp;&nbsp;} else if (restaurant == "McDonalds") {
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.chickFilA = false;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.mcDonalds = true;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.pandaExpress = false;
+    &nbsp;&nbsp;&nbsp;&nbsp;} else if (restaurant == "PandaExpress") {
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.chickFilA = false;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.mcDonalds = false;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.pandaExpress = true;
+    &nbsp;&nbsp;}
+    
+    &nbsp;&nbsp;}
+    </code></pre>
+    Now that the allergen list is created, we need to dynamically change the food items shown based on the restaurant they belong to and if they contain the allergens selected by the user. We will do this using AngularJS’ ngIf directive. We are already displaying the objects using the ngFor directive, but we need to use ngIf to correctly filter these items. 
+<br><br>First we need to filter the items by restaurant. The ngIf directive will use a function called <b>checkRestaurant()</b> and will return true if the boolean for the restaurant being passed through the function is the same restaurant that is selected. Add the following to your code in place of the ngFor function that displays the food items:
+<br><br><pre><code>&lt;ng-container *ngIf="checkRestaurant('ChickFilA')"&gt;
+    &nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Chick Fil A&lt;/p&gt;
+    &lt;/ng-container&gt;
+    
+    &lt;ng-container *ngIf="checkRestaurant('McDonalds')"&gt;
+    &nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;McDonalds&lt;/p&gt;
+    &lt;/ng-container&gt;
+    
+    &lt;ng-container *ngIf="checkRestaurant('PandaExpress')"&gt;
+    &nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Panda Express&lt;/p&gt;
+    &lt;/ng-container&gt;
+    
+    </code></pre>
+    Go back into the menuitem.component.ts file. We need to create the <b>checkRestaurant()</b> function, which will have an input string of the restaurant name. Based on the restaurant input, if the restaurant name matches the corresponding boolean with the value of true, the function will return true and display the items for that restaurant.
+<br><br>
+<pre><code>checkRestaurant(restaurant: string): boolean{
+
+    &nbsp;&nbsp;&nbsp;&nbsp;if (restaurant == "ChickFilA" &amp;&amp; this.chickFilA === true) {
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return true;
+    &nbsp;&nbsp;&nbsp;&nbsp;} else if (restaurant == "McDonalds" &amp;&amp; this.mcDonalds === true) {
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return true;
+    &nbsp;&nbsp;&nbsp;&nbsp;} else if (restaurant == "PandaExpress" &amp;&amp; this.pandaExpress === true) {
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return true;
+    &nbsp;&nbsp;&nbsp;&nbsp;}else{
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return false;
+    &nbsp;&nbsp;&nbsp;&nbsp;}
+    }
+
+    </code></pre>
+    Save the files and reload the browser window. Now, when you press the restaurant buttons, the corresponding restaurant name will display under the allergen check boxes. After you click on the McDonald’s button, this is what the browser window looks like:
+<br><br><img  src="images/image7.png" width="500px"><br><br>To effectively filter through menu items, we need to populate the menu for each restaurant. You can use whichever restaurant you desire, but we will provide the items and allergens for ChickFilA, McDonald’s and Panda Express. Paste the following into your menuitem.component.ts file in place of the myMenu object:
+<br><br><pre><code>public chickFilAMenu: MenuItems[] = [
+
+    &nbsp;&nbsp;&nbsp;&nbsp;{ item: 'Chick-fil-A Chicken Biscuit', allergens: 'dairy, egg, soy, wheat', image: 'assets/images/Chickfila/ChickenBiscuit.jpg'},
+    &nbsp;&nbsp;&nbsp;&nbsp;{ item: 'Chick-n-Minis', allergens: 'dairy, egg, soy, wheat', image:'assets/images/Chickfila/Minis.jpg' },
+    &nbsp;&nbsp;&nbsp;&nbsp;{ item: 'Egg White Grill', allergens: 'dairy, egg, soy, wheat', image:'assets/images/Chickfila/EggWhiteGrill.jpg'},
+    &nbsp;&nbsp;&nbsp;&nbsp;{ item: 'Hash Brown Scramble Burrito', allergens: 'dairy, egg, soy, wheat', image:'assets/images/Chickfila/HashScrambleBurrito.jpg'},
+    &nbsp;&nbsp;&nbsp;&nbsp;{ item: 'Hash Brown Scramble Bowl', allergens: 'dairy, egg, soy, wheat', image:'assets/images/Chickfila/HashScrambleBowl.jpg'},
+    &nbsp;&nbsp;&nbsp;&nbsp;{ item: 'Bacon, Egg &amp; Cheese Biscuit', allergens: 'dairy, egg, soy, wheat', image:'assets/images/Chickfila/BaconEgg.jpg'},
+    &nbsp;&nbsp;&nbsp;&nbsp;{ item: 'Sausage, Egg &amp; Cheese Biscuit', allergens: 'dairy, egg, soy, wheat', image:'assets/images/Chickfila/SausageEgg.jpg'},
+    &nbsp;&nbsp;&nbsp;&nbsp;{ item: 'Chicken, Egg &amp; Cheese Bagel', allergens: 'dairy, egg, soy, wheat', image:'assets/images/Chickfila/ChickenBagel.jpg'},
+    &nbsp;&nbsp;&nbsp;&nbsp;{ item: 'Buttered Biscuit', allergens: 'dairy, soy, wheat', image:'assets/images/Chickfila/Biscuit.jpg'},
+    &nbsp;&nbsp;&nbsp;&nbsp;{ item: 'Sunflower Multigrain Bagel', allergens: 'dairy, wheat', image:'assets/images/Chickfila/SunflowerBagel.png'},
+    &nbsp;&nbsp;&nbsp;&nbsp;{ item: 'English Muffin', allergens: 'wheat', image:'assets/images/Chickfila/EnglishMuffin.png'},
+    &nbsp;&nbsp;&nbsp;&nbsp;{ item: 'Hash Browns', allergens: 'none', image: 'assets/images/Chickfila/HashBrowns.jpg' },
+    &nbsp;&nbsp;&nbsp;&nbsp;{ item: 'Greek Yogurt Parfait', allergens: 'dairy, tree nuts', image: 'assets/images/Chickfila/Parfait.jpg' },
+    &nbsp;&nbsp;&nbsp;&nbsp;{ item: 'Fruit Cup', allergens: 'none', image: 'assets/images/Chickfila/FruitCups.jpg' },
+    &nbsp;&nbsp;&nbsp;&nbsp;{ item: 'Chick-fil-A Chicken Sandwich', allergens: 'dairy, egg, soy, wheat', image: 'assets/images/Chickfila/ChickFilASandwich.jpg' },
+       
+    
+    
+    &nbsp;&nbsp;];
+    
+    &nbsp;&nbsp;public mcDonaldsMenu: MenuItems[] = [
+    
+    &nbsp;&nbsp;&nbsp;&nbsp;{ item: 'Big Mac', allergens: 'dairy, egg, soy, wheat', image: 'assets/images/Mcdonalds/BigMac.jpeg' },
+    &nbsp;&nbsp;&nbsp;&nbsp;{ item: 'Filet-O-Fish', allergens: 'dairy, egg, soy, wheat, fish', image: 'assets/images/Mcdonalds/FiletOFish.jpg' },
+    &nbsp;&nbsp;&nbsp;&nbsp;{ item: 'Chicken McNuggets', allergens: 'wheat', image: 'assets/images/Mcdonalds/McNuggets.jpg' },
+    &nbsp;&nbsp;&nbsp;&nbsp;{ item: 'McChicken', allergens: 'egg, soy, wheat, tree nuts', image: 'assets/images/Mcdonalds/McChicken.jpg' },
+    &nbsp;&nbsp;&nbsp;&nbsp;{ item: 'French Fries', allergens: 'soy', image: 'assets/images/Mcdonalds/FrenchFries.jpg' },
+    &nbsp;&nbsp;&nbsp;&nbsp;{ item: 'Southwest Grilled Chicken Salad', allergens: 'dairy, eggs', image: 'assets/images/Mcdonalds/SouthwestSalad.jpeg' },
+    &nbsp;&nbsp;&nbsp;&nbsp;{ item: 'Garden Side Salad', allergens: 'none', image: 'assets/images/Mcdonalds/GardenSalad.jpg' },
+    &nbsp;&nbsp;&nbsp;&nbsp;{ item: 'Egg McMuffin', allergens: 'dairy, egg, soy, wheat', image: 'assets/images/Mcdonalds/EggMcMuffin.jpg' },
+    &nbsp;&nbsp;&nbsp;&nbsp;{ item: 'Sausage McMuffin', allergens: 'dairy, soy, wheat', image: 'assets/images/Mcdonalds/SausageMcMuffin.jpg' },
+    &nbsp;&nbsp;&nbsp;&nbsp;{ item: 'Hashbrown', allergens: 'soy', image: 'assets/images/Mcdonalds/Hashbrown.jpg' },
+    &nbsp;&nbsp;&nbsp;&nbsp;{ item: 'Hotcakes', allergens: 'egg, dairy, soy, wheat', image: 'assets/images/Mcdonalds/Hotcakes.jpg' },
+    &nbsp;&nbsp;&nbsp;&nbsp;{ item: 'Chicken McWrap', allergens: 'soy, wheat', image: 'assets/images/Mcdonalds/McWrap.jpg' },
+    &nbsp;&nbsp;&nbsp;&nbsp;{ item: 'McFlurry Oreo', allergens: 'dairy, egg, soy, tree nuts, wheat', image: 'assets/images/Mcdonalds/McFlurry.jpg' },
+    &nbsp;&nbsp;&nbsp;&nbsp;{ item: 'Strawberry Shake', allergens: 'dairy', image: 'assets/images/Mcdonalds/Shake.jpg' },
+    &nbsp;&nbsp;&nbsp;&nbsp;{ item: 'ChocoCone', allergens: 'dairy, soy, wheat', image: 'assets/images/Mcdonalds/Chococone.png' },
+    
+    
+    &nbsp;&nbsp;];
+    
+    &nbsp;&nbsp;public pandaExpressMenu: MenuItems[] = [
+    
+    &nbsp;&nbsp;&nbsp;&nbsp;{ item: 'Black Pepper Chicken', allergens: 'soy, wheat', image: 'assets/images/Panda/BlackPepper.jpg' },
+    &nbsp;&nbsp;&nbsp;&nbsp;{ item: 'Kung Pao Chicken', allergens: 'wheat, soy, tree nuts', image: 'assets/images/Panda/KungPao.jpg' },
+    &nbsp;&nbsp;&nbsp;&nbsp;{ item: 'Grilled Teriyaki Chicken', allergens: 'wheat, soy', image: 'assets/images/Panda/Teriyaki.jpg' },
+    &nbsp;&nbsp;&nbsp;&nbsp;{ item: 'Super Greens', allergens: 'wheat, soy', image: 'assets/images/Panda/SuperGreens.jpg' },
+    &nbsp;&nbsp;&nbsp;&nbsp;{ item: 'Mushroom Chicken', allergens: 'wheat, soy', image: 'assets/images/Panda/MushroomChicken.jpg' },
+    &nbsp;&nbsp;&nbsp;&nbsp;{ item: 'Orange Chicken', allergens: 'wheat, soy, egg, dairy', image: 'assets/images/Panda/OrangeChicken.jpg' },
+    &nbsp;&nbsp;&nbsp;&nbsp;{ item: 'Beijing Beef', allergens: 'wheat, soy, milk', image: 'assets/images/Panda/BeijingBeef.jpg' },
+    &nbsp;&nbsp;&nbsp;&nbsp;{ item: 'Shanghai Angus Steak', allergens: 'wheat, soy', image: 'assets/images/Panda/ShanghaiSteak.jpg' },
+    &nbsp;&nbsp;&nbsp;&nbsp;{ item: 'Honey Walnut Shrimp', allergens: 'wheat, soy, tree nuts, fish, egg, dairy', image: 'assets/images/Panda/HoneyShrimp.jpg' },
+    &nbsp;&nbsp;&nbsp;&nbsp;{ item: 'Firecracker Shrimp', allergens: 'wheat, soy, fish', image: 'assets/images/Panda/FirecrackerShrimp.jpg' },
+    &nbsp;&nbsp;&nbsp;&nbsp;{ item: 'Cream Cheese Rangoon', allergens: 'wheat, egg, dairy', image: 'assets/images/Panda/CCRangoon.jpg' },
+    &nbsp;&nbsp;&nbsp;&nbsp;{ item: 'Vegetable Spring Roll', allergens: 'wheat, soy', image: 'assets/images/Panda/SpringRolls.jpg' },
+    &nbsp;&nbsp;&nbsp;&nbsp;{ item: 'Eggplant Tofu', allergens: 'wheat, soy', image: 'assets/images/Panda/EggplantTofu.jpg' },
+    &nbsp;&nbsp;&nbsp;&nbsp;{ item: 'Chow Mein', allergens: 'wheat, soy', image: 'assets/images/Panda/ChowMein.jpg' },
+    &nbsp;&nbsp;&nbsp;&nbsp;{ item: 'White Steamed Rice', allergens: 'none', image: 'assets/images/Panda/WhiteRice.jpg' },
+    
+    
+    &nbsp;&nbsp;];
+
+    </code></pre>
+    The images will not load properly until after we import them, but we won’t import them until the page is correctly styled with CSS.<br><br>
+    The last function we need to create to finish our application is the <b>checkAllergens()</b> function. The input for this function is the index of the menu item being accessed in the for loop and the name of the restaurant, so that the function can search through the correct menu. This function returns a true or false value in order to let the program know if the item should be displayed based on the allergens it contains. It loops through each allergen in our list and checks the item’s allergens for a match. If there isn’t a match, it returns true.
+ <br><br><pre><code>checkAllergens(i: number, restaurant: string): boolean {
+
+        &nbsp;&nbsp;&nbsp;&nbsp;if (restaurant == "ChickFilA") {
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (let item of this.allergensList) {
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (this.chickFilAMenu[i].allergens.includes(item)) {
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return false;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+        &nbsp;&nbsp;&nbsp;&nbsp;} else if (restaurant == "McDonalds") {
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (let item of this.allergensList) {
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (this.mcDonaldsMenu[i].allergens.includes(item)) {
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return false;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+        &nbsp;&nbsp;&nbsp;&nbsp;} else if (restaurant == "PandaExpress") {
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (let item of this.allergensList) {
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (this.pandaExpressMenu[i].allergens.includes(item)) {
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return false;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+        &nbsp;&nbsp;&nbsp;&nbsp;}
+        
+        &nbsp;&nbsp;&nbsp;&nbsp;return true;
+        
+        &nbsp;&nbsp;}
+        </code></pre>
+        Before styling, our last step is using our checkAllergens() function to filter the items by using the ngIf directive. For each item in the menu, we will use an ng-container to display only the items that do not have an allergen that we selected in them. The code for one restaurant should look like this: <br><br>
+        <pre><code>&lt;ng-container *ngIf="checkRestaurant('ChickFilA')"&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h2&gt;Chick-Fil-A Menu&lt;/h2&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="menuItem" *ngFor="let menu of chickFilAMenu; let indexOfelement = index;"&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-container *ngIf="checkAllergens(indexOfelement, 'ChickFilA')"&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="oneitem"&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;img src="{{menu.image}}"&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h3&gt;{{menu.item}} &lt;/h3&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Allergens - {{menu.allergens}}&lt;/p&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ng-container&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;/ng-container&gt;
+            </code></pre>
+            Repeat this code for the other two restaurants and make sure to change the attribute values to match the appropriate restaurant. 
+Save your code and reload the browser. After it is reloaded, once you click on the ChickFilA button, the following will appear:
+<br><br><img  src="images/image5.png" width="500px"><br><br>Choosing an allergen will filter out the items! The application is done! The final step is to style the page. 
+</p>
+
+    </div>
+
+    <div class="install">
+        <h3>Styling the Page</h3>
+        <p>
+            We are going to mainly focus on the display of the menu items. The styling can be up to your standards, but we can briefly walk through some of the designs we implemented. First we need to link our styles.css to our application. Create a styles.css file and add it to your app folder.
+            In your <b>app.component.ts</b> file, add the styles.css file to your @Component section.<br><br>
+            <pre><code>@Component({
+                selector: 'my-app',
+                templateUrl: 'app/app.component.html',
+                styleUrls: ['app/styles.css']
+              })</code></pre>
+              <h4>Styling the Body of the Page</h4>
+              For the body of the page, we chose a light neutral color background with a tile image background overlay. This makes the website look cleaner, but still maintains readability. We also chose a custom font to include.
+              The header was simple and 
+              <br><br><pre><code>body {
+                background-color: #FAFAFA;
+                background-image: url("https://www.transparenttextures.com/patterns/climpek.png");
+              padding: 0;
+              margin: 0;
+            }
+            
+        p {
+                font-family: 'Apercu Pro';
+        }
+
+        @font-face {
+                font-family: 'Apercu Pro';
+                src: url('ApercuPro.eot');
+                src: local('Apercu Pro'), local('ApercuPro'), url('ApercuPro.eot?#iefix') format('embedded-opentype'), url('ApercuPro.woff2') format('woff2'), url('ApercuPro.woff') format('woff'), url('ApercuPro.ttf') format('truetype');
+                font-weight: normal;
+                font-style: normal;
+        }
+
+        </code></pre>
+              <h4>Styling the Header of the Page</h4>
+              For styling the header, we chose to display the application's name clearly with contrast to the rest of the website. 
+              <br><br><pre><code>h1 {
+                color: white;
+                font-family: "Helvetica Neue", sans-serif;
+                font-size: 75px;
+                letter-spacing: -7px;
+                background-color: #CF4A44;
+                padding: 25px;
+                margin: auto;
+                text-align: center;
+                height: 100px;
+                background-image: url("https://www.transparenttextures.com/patterns/60-lines.png");
+                
+            }</code></pre>
+              <h4>Styling the Restaurant Section</h4>
+              For styling the manage restaurant section, we modified the appearance and the click behavior of the buttons.<br><br>
+              <pre><code>button {
+                background: white;
+                width: 150px;
+                height: 100px;
+                margin: 20px;
+                position: center;
+                cursor: pointer;
+                box-shadow: 0 9px #CF4A44;
+            }
+            
+                button:hover {
+                    background: #DEDEDE;
+                    transition: all 0.8s;
+                }
+            
+                button:active {
+                    background-color: #CF4A44;
+                    box-shadow: 0 5px #84302D;
+                    transform: translateY(4px);
+                    transition: all 0.2s;
+                }
+            
+                button:focus {
+                    outline: 0;
+                }
+            
+            
+            button img{
+                height: 70px;
+            }
+            
+            
+            .rest {
+                color: white;
+                background: #fafafa;
+            }</code></pre>
+              <h4>Styling the Allergen Section</h4>
+              For the allergen section, we modified the appearance of the label and added styling to the containers so that they would float side by side.<br><br>
+              <pre><code>
+                label{
+                    padding-right: 30px;
+                    padding-left:5px;
+                  letter-spacing: 1px;
+                }
+                
+                h2 {
+                    color: #CF4A44;
+                    width: 300px;
+                    margin: auto;
+                    margin-top: 50px;
+                    font-family: 'Apercu Pro';
+                    text-align: center;
+                    -webkit-text-stroke: 1px white;
+                }
+                
+                #manage {
+                    width: 40%;
+                  padding: 5%;
+                    padding-top: 20px;
+                    margin: auto;
+                    font-family: 'Apercu Pro';
+                  float:left;
+                  height: 200px;
+                  margin-bottom: 100px;
+                }
+                
+                
+                
+                h3 {
+                    padding: 0;
+                    color: #4A4A4A;
+                    margin: 0;
+                    font-family: 'Apercu Pro';
+                
+                }
+
+                #checkboxes{
+                    margin-top: 60px;
+                }
+                </code></pre>
+              <h4>Styling the Menu Items</h4>
+              For styling the menu items, we wanted each item to be in a container. We would display these containers in rows and columns depending on the size of the page. We wanted to have a space to display an image, the name of the item, and the allergens it contains.<br><br>
+              <pre><code>
+                .oneitem h3 {
+                    background-color: #EB6161;
+                    color: white;
+                    padding: 15px;
+                    padding-bottom: 0px;
+                    margin-bottom: -10px;
+                    background-image: url("https://www.transparenttextures.com/patterns/60-lines.png");
+                }
+                
+                .oneitem{
+                    border: 5px solid white;
+                    width:400px;
+                    float: left;
+                  position: relative;
+                    margin-right: 30px;
+                    margin-left: 30px;
+                    margin-top:60px;
+                    margin-bottom:20px;
+                
+                }
+                
+                    .oneitem p {
+                        color: white;
+                        background-color: #EB6161;
+                        padding: 15px;
+                        margin: 0;
+                        background-image: url("https://www.transparenttextures.com/patterns/60-lines.png");
+                
+                    }
+                
+                .oneitem img{
+                    width: 400px;
+                    height: 300px;
+                    object-fit: cover;
+                    overflow: hidden;
+                    margin-bottom: -6px;
+                    border-bottom: 2px solid #EBEBEB;
+                }
+                
+                
+                
+                .display{
+                    margin-left:5%;
+                    margin-bottom: 300px;
+                }
+                </code></pre>
+        </p>
+    </div>
+
+    <div class="install">
+        <h3>Setting up the form on your webpage!</h3>
+        <p>In order to get appropriate feedback, we want to add a form to the page. Add this code after the display of the menu items. We will be adding a field for first name, last name, email, gender, opt-in for email updates, where you heard about us, allergens we should add, and restaurants we should add. If you want the results sent to your email, be sure to update the form's post settings.</p><br><br>
+        <pre><code>&lt;div id="formSection" class="section"&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h2&gt;Form&lt;/h2&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;form id="form1" method="post" action="http://cis-iis2.temple.edu/users/pascucci/cis3342/FormProcessor.aspx?mail=tuh00902@temple.edu"&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;table&gt;
+            
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;caption&gt;Sign up for updates!&lt;/caption&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;label for="FirstName"&gt;First Name*&lt;/label&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input type="text" name="FirstName" id="FirstName" required /&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;label for="LastName"&gt;Last Name*&lt;/label&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input type="text" name="LastName" id="LastName" required /&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;label for="Email"&gt;Email Address*&lt;/label&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input type="email" name="Email" id="Email" required /&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input type="radio" id="male" name="gender" value="male"&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;label for="male"&gt;Male &lt;/label&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input type="radio" id="female" name="gender" value="female"&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;label for="female"&gt;Female &lt;/label&gt;
+            
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input type="radio" id="other" name="gender" value="other"&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;label for="other"&gt;Other&lt;/label&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input type="checkbox" id="text" name="email updates" value="yes to email updates" form="form1" /&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;label for="email"&gt;I would like to receive email updates.&lt;/label&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;label for="whereFrom"&gt;Where did you hear about this website?&lt;/label&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;select id="whereFrom" name="whereFrom" form="form1"&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;option value="google"&gt;Google&lt;/option&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;option value="CIS3344"&gt;CIS 3344&lt;/option&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;option value="socialmedia"&gt;Social Media&lt;/option&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;option value="other"&gt;Other&lt;/option&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/select&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;label for="allergens"&gt;Which allergens would you suggest we add?&lt;/label&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;textarea name="allergens"&gt;&lt;/textarea&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;label for="restaurants"&gt;Which restaurants would you suggest we add?&lt;/label&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;textarea name="restaurant"&gt;&lt;/textarea&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Required = *&lt;/td&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/table&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input type="submit" value="Submit" /&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/form&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;</code></pre>
+    </div>
+
+    <div class="install">
+        <h2>Congrats! You have finished designing your first Angular 2.0 web application!</h2>
+        </div>
+
+
+    
+
+</body>
+</html>

@@ -1,0 +1,157 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Angular 2.0 Tutorial</title>
+    <link rel="stylesheet" href="styleMain.css" />
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <h4>Angular 2.0 Tutorial</h4>
+        </div>
+        <ul class="nav-link">
+            <li><a href="intro.html">Home</a>
+            </li>
+            <li> <a href="installation.html">Installation</a>
+            </li>
+            <li> <a href="demo.html">Demo</a>
+            </li>
+            <li><a href="conclusion.html">Conclusion</a>
+            </li>
+        </ul>
+    </nav>
+
+
+    <div class="banner">
+        <p>
+            <h3>Let's get started!</h3>
+            In order to get started, we need to create the environment on our machines
+            to be able to code and run our projects as well as have all libraries set up.
+        </p>
+    </div>
+
+    <div class="install">
+        <h3>Step 1: Download Node.JS</h3>
+        <p>
+            To use Angular 2, you have to download Node onto your machine by visiting
+            nodejs.org. The home page comes to provide the download link that is
+            compatible for your machine. Download the LTS version which is recommended
+            for most users.
+        </p>
+        <p>
+            Below is what you might find on the website's home page if you're a Mac user.
+            The website displays the download links based off of your machine's operating system.
+        </p>
+        <img class="nodeSetUp" src="images/nodeDownload.png" alt="" />
+    </div>
+
+    <div class="install">
+        <h3>Step 2: Open Command Prompt/ Terminal</h3>
+        <p>
+            After installing the latest version, open up either the Command
+            Prompt for Windows or Terminal for Mac OS. Spelling is crucial
+            so make sure the commands you type are correctly typed before running them.
+        </p>
+        <p>Windows users should type in the command:</p> <code>npm install -g typescript</code>
+        <p>Mac users should type in the command:</p> <code>sudo npm install -g typescript</code>
+        <p> Press the enter button to run the command line. With this, we installed TypeScript globally onto our machine.</p>
+        <p>Next, type in this command:</p>
+
+        <p><strong>Windows:</strong></p><code>npm install -g typings</code>
+        <p><strong>Mac OS:</strong></p><code>sudo npm install -g typings</code>
+    </div>
+
+    <div class="install">
+        <h3>Step 3: Download a Text Editor</h3>
+        <p>
+            After this is done installing, you need to download and
+            open a text editor that supports typescript, such as <strong>Microsoft Visual Studio</strong>.
+            Any form of Visual Studio is fine just as long as it supports typsecript.
+            If a version is to be recommended, We would say Visual Studio Code or Community would work best.
+        </p>
+
+        <img class="vsSetUp" src="images/vsDownload.png" alt="" />
+        <p>
+            For this tutorial, we have Visual Code here and just like Nodejs.org,
+            The website recognized my operating system and had an option to download with a click of a button.
+            the dropdown shows other version to download as well.
+        </p>
+    </div>
+
+
+    <div class="install">
+        <h3>Step 4: Download Github and Install Dependencies</h3>
+        <p>
+            Although it is possible to set up your application from scratch,
+            it is preferred to use Angular Github because of the dependencies needed.
+            Visit Github.com and a download tab should display at the top. Click on the tab
+            you will find yourself with the website presenting,yet again, a version of github
+            compatible for your operating system for you to download.
+        </p>
+        <img class="gitSetUp" src="images/gitDownload.png" alt="" />
+        <p>
+            The page should look like this.We had previous examples for a macOS system but this is for Windows.
+            After the download is complete, please follow the installation steps.
+        </p>
+        <p>
+            Now, go to<code>https://github.com/angular/quickstart</code>.
+            This url will help aid us get a clone of the repository.
+        </p>
+        <p>
+            Open up your command prompt/terminal and we are going to run command lines
+            to create a project directory. We will be naming this project directly as
+            'allergen'. This will later play a roll in our Demo.To start run this line of code:
+        </p>
+        <code>mkdir allergen</code>
+
+        <p>
+            We will now enter the directory with this next command in order to clone the repository
+            into the 'allergen' folder that we just created:
+        </p>
+
+        <code>cd allergen</code>
+
+        <p>Then, run this line of code to clone:</p>
+        <code>git clone https://github.com/angular/quickstart Demo</code>
+
+        <p>If you realized, we are using the url link in our command to extract the files we need.</p>
+        <p>
+            Open the cloned code in Visual Studio, or another text editor that you are using.
+            Find the 'allergen' folder and open it.
+        </p>
+        <p>Go back to the command prompt/terminal and go into your 'Demo' folder by typing the command:</p>
+        <code>cd Demo</code>
+
+        <p>Next, type the command and press enter:</p>
+
+        <p><strong>Windows:</strong></p><code>npm install</code>
+
+        <p><strong>Mac OS:</strong></p><code>sudo npm install</code>
+
+        <p>You might get a message stating packages need “funding”, if that does come up
+            on terminal run this command</p>
+
+        <p><strong>Windows:</strong></p><code>npm audit fix</code>
+
+        <p><strong>Mac OS:</strong></p><code>sudo npm audit fix</code>
+
+        <p>It might not come up and that is totally fine. You can skip this and continue to 
+        finish the process by running the last command which is: </p>
+
+        <p><strong>Windows:</strong></p><code>npm start</code>
+
+        <p><strong>Mac OS:</strong></p><code>sudo npm start</code>
+       
+    </div>
+
+
+    <div class="install">
+        <h3>
+            You finished the installation! Keep your terminal open and running and click on the 'Demo' tab up top to get started on
+            learning how to use Angular 2 to create a project.
+        </h3>
+
+    </div>
+</body>
+</html>

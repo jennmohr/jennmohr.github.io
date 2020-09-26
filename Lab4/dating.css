@@ -1,0 +1,172 @@
+﻿body {
+    font-family: 'Apercu Pro';
+    margin: auto;
+    font-weight: normal;
+}
+
+h1 {
+    background-color: #790604;
+    height: 350px;
+    text-align: center;
+    margin: auto;
+    padding-bottom: 10px;
+    border: 5px black solid;
+    background-image: url("images/always-grey.png");
+}
+
+
+
+.application {
+    margin: auto;
+    width: 60%;
+}
+
+#displayArea h2 {
+    background-color: white;
+    padding: 12px;
+    margin: 0;
+    font-size: 30px;
+    text-align: left;
+}
+
+
+
+
+#messageArea {
+    color: #790604;
+    width: 50%;
+    margin: auto;
+    font-size: larger;
+    text-align: center;
+}
+
+#displayArea {
+    font-size: 20px;
+    padding: 40px;
+}
+
+button {
+    padding: 10px;
+    margin-top: -47px;
+    width: 154px;
+    font-size: 20px;
+}
+
+
+img {
+    float: left;
+    object-fit: cover;
+    border: 4px solid #790604;
+    width: 300px;
+    height: 300px;
+    overflow: hidden;
+}
+
+button img {
+    border: none;
+    width: 60px;
+    height: 60px;
+    padding: 35px;
+}
+
+#profile {
+    height: 550px;
+    padding: 30px;
+    width: 700px;
+    margin: auto;
+}
+
+p {
+    margin-left: 340px;
+    margin-top: 60px;
+    text-align: left;
+    font-weight: normal;
+}
+
+.likes {
+    margin: auto;
+    padding-bottom: 100px;
+}
+
+.likebutton {
+    background-color: #790604;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 25px;
+    cursor: pointer;
+    
+}
+
+#addprofile {
+    background-color: #790604;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+
+select {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    font-size: 16px;
+    font-family: 'Apercu Pro';
+    background-color: #790604;
+    color: white;
+    padding: 10px;
+    width: 200px;
+}
+
+.removebtn {
+    width: 308px;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+
+@font-face {
+    font-family: 'Apercu Pro';
+    src: url('ApercuPro.eot');
+    src: local('Apercu Pro'), local('ApercuPro'), url('ApercuPro.eot?#iefix') format('embedded-opentype'), url('ApercuPro.woff2') format('woff2'), url('ApercuPro.woff') format('woff'), url('ApercuPro.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+h1 img {
+    float: none;
+    padding: 30px;
+    border: none;
+    width: 600px;
+    overflow:auto;
+    margin-left: 200px;
+}
+
+footer {
+    color: white;
+    background-color: #790604;
+    padding: 0;
+    height: 150px;
+    text-align: center;
+}
+
+h3{
+    text-align: center;
+    margin-top: 20px;
+}
+
+#modifyProfile{
+    display: none;
+}

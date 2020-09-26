@@ -1,0 +1,147 @@
+﻿
+
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: 'Poppins',sans-serif;
+}
+
+html, body {
+    background-color: #E7E1E2;
+}
+
+.logo {
+    color: rgb(226,226,226);
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    font-size: 20px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 8vh;
+    background-color: #732d40;
+    font: 'Poppins', 'san-serif';
+}
+
+.nav-link{
+    display: flex;
+    justify-content: space-around;
+    width: 35%;
+}
+
+.nav-link li{
+    list-style: none;
+}
+
+.nav-link a{
+    color: rgb(226,226,226);
+    text-decoration: none;
+    letter-spacing: 3px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.angLogo{
+    margin: 20px;
+    float:left;
+    width:200px;
+    height:200px;
+
+}
+
+.banner {
+    margin-right: 15%;
+    margin-left: 15%;
+    background-color: #FAF7F8;
+    margin-top: 50px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    padding-right: 5%;
+    padding-left: 5%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    font-size: 14px;
+}
+
+
+.install{
+    margin: 2% 15% 2% 15%;
+    background-color: #FAF7F8;
+    box-sizing: border-box;
+    padding: 2% 5% 2% 5%;
+    font-size: 14px;
+    position: center;
+
+}
+.p-left{
+    border-radius:15%;
+    margin: 10px;
+    background-color: #FAF7F8;
+}
+
+h3{
+    padding-bottom: 5px;
+    text-align:center;
+}
+
+p {
+   padding-top:5px;
+   padding-bottom: 2px;
+}
+
+code {
+    font-size: 14px;
+    font-family: Courier New, Courier, monospace;
+    font-weight: bold;
+    text-align: center;
+    padding-bottom: 5px;
+    padding-left: 2em;
+    color: maroon;
+}
+
+.nodeSetUp {
+    width: 500px;
+    height: 200px;
+    margin: 5px 20px 5px 120px;
+    padding-top: 2%;
+}
+
+.vsSetUp {
+    width: 500px;
+    height: 255px;
+    margin: 5px 20px 5px 120px;
+    padding-top: 2%;
+}
+
+.gitSetUp {
+    width:475px;
+    height:255px;
+    margin: 5px 2px 5px 120px;
+    padding-top: 2%;
+}
+
+pre{
+        background: #f4f4f4;
+        border: 1px solid #ddd;
+        border-left: 3px solid #f36d33;
+        color: #666;
+        page-break-inside: avoid;
+        font-family: monospace;
+        font-size: 15px;
+        line-height: 1.6;
+        margin-bottom: 1.6em;
+        max-width: 100%;
+        overflow: auto;
+        padding: 1em 1.5em;
+        display: block;
+        word-wrap: break-word;
+}

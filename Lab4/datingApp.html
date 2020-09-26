@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Love Birds</title>
+    <link rel="stylesheet" href="dating.css">
+    <script type="text/profiles.js" src="profiles.js"></script>
+    <script type="text/javascript" src="dating.js"></script>
+</head>
+<body>
+    <h1>
+        <img src="images/lovebirds.png" />
+    </h1>
+
+    <div class="application">
+        <br /><center>
+        
+
+    <h2>Who do you want to see?</h2>
+    <select id="gender" onchange="update()">
+        <option value="Clear">Select gender:</option>
+        <option value="Men">Men</option>
+        <option value="Women">Women</option>
+        <option value="Everyone">Everyone</option>
+    </select>
+    <h2>Filter by State</h2>
+    <select id="state" onchange="update()">
+        <option value="NONE">Select state:</option>
+        <option value="CA">CA</option>
+        <option value="MN">MN</option>
+        <option value="NJ">NJ</option>
+        <option value="PA">PA</option>
+        <option value="TX">TX</option>
+
+    </select>
+</center>
+    </div>
+    <br />
+
+    <br />
+    <div id="displayArea">
+    </div>
+    <div id="messageArea"></div>
+    <br />
+    <div id="modifyProfile">
+        <form id="modifyProfileForm">
+            <center>
+                <label for="genderMod">Select your gender:</label><br />
+                <select id="genderMod">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select><br /><br />
+
+                <label for="usernameMod">Username:</label><br />
+                <input type="text" id="usernameMod" name="username" /><br /><br />
+
+                <label for="nameMod">Name:</label><br />
+                <input type="text" id="nameMod" name="name" /><br /><br />
+
+                <label for="ageMod">Age:</label><br />
+                <input type="text" id="ageMod" name="age" /><br /><br />
+
+                <label for="descriptionMod">Profile Description:</label><br />
+                <input type="text" id="descriptionMod" name="description" /><br /><br />
+
+                <label for="cityMod">City:</label><br />
+                <input type="text" id="cityMod" name="city" /><br /><br />
+
+                <label for="stateMod">State:</label><br />
+                <select id="stateMod">
+                    <option value="CA">California</option>
+                    <option value="MN">Minnesota</option>
+                    <option value="NJ">New Jersey</option>
+                    <option value="PA">Pennsylvania</option>
+                    <option value="TX">Texas</option>
+                </select><br /><br />
+
+                <label for="statusMod">Status:</label><br />
+                <input type="radio" id="statusMod" name="single" value="single" />
+                <label for="single">Single</label><br />
+                <input type="radio" id="status" name="taken" value="taken" />
+                <label for="taken">Taken</label><br /><br />
+
+                <label for="doeshaskidsMod">Has Kids:</label><br />
+                <input type="radio" id="doeshaskidsMod" name="havenokids" value="havenokids" />
+                <label for="havenokids">No</label><br />
+                <input type="radio" id="doeshaskidsMod" name="haskids" value="haskids" />
+                <label for="haskids">Yes</label><br /><br />
+
+                <label for="doeswantkidsMod">Wants Kids:</label><br />
+                <input type="radio" id="doeswantkidsMod" name="wantsnokids" value="wantsnokids" />
+                <label for="wantsnokids">No</label><br />
+                <input type="radio" id="doeswantkidsMod" name="wantskids" value="wantskids" />
+                <label for="wantskids">Yes</label><br /><br />
+
+                <label for="typeMod">Type of relationship:</label><br />
+                <select id="typeMod">
+                    <option value="friendship">Friendship</option>
+                    <option value="longterm">Long Term</option>
+                    <option value="hookups">Hookups</option>
+                    <option value="unsure">Unsure</option>
+                </select><br /><br />
+
+                <label for="religionMod">Religion:</label><br />
+                <select id="religionMod">
+                    <option value="Catholic">Catholic</option>
+                    <option value="Christian">Christian</option>
+                    <option value="Jewish">Jewish</option>
+                    <option value="Muslim">Muslim</option>
+                </select><br /><br />
+
+                <label for="imageMod">Image URL:</label><br />
+                <input type="text" id="imageMod" name="image" /><br /><br />
+
+                <input type="button" class="likebutton" id="addProfile" onclick="addModified()" value="Save Profile" /><br /><br />
+
+            </center>
+        </form>
+    </div>
+    <br />
+    <div class="likes">
+        <center>
+            <input type="button" class="likebutton" value="View Your Likes!" onclick="getLikes();" /><br /><br />
+            <input type="button" class="likebutton" value="View Your Dislikes!" onclick="getDislikes();" /><br /><br />
+            <input type="button" class="likebutton" value="New Profile" onclick="location.href='newProfile.html'" /><br /><br />
+            <input type="button" class="likebutton" value="Preview Profile" onclick="getProfileView();" />
+        </center>
+    </div>
+    <footer>
+        <h3><br /><br />Created by: Jennifer Mohr</h3>
+    </footer>
+</body>
+</html>
