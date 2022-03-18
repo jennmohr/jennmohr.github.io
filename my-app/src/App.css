@@ -1,0 +1,145 @@
+@font-face { 
+  font-family: 'apercu-medium'; src: url('./fonts/Apercu Medium.otf'); 
+  font-style: normal; 
+}
+
+@font-face { 
+  font-family: 'sixers-font'; src: url('./fonts/itc-clearface-black.otf'); 
+  font-style: normal; 
+}
+
+@font-face { 
+  font-family: 'eagles-font'; src: url('./fonts/NFLEAGLE.TTF'); 
+  font-style: normal; 
+}
+
+@font-face { 
+  font-family: 'phillies-font'; src: url('./fonts/MLBPhiladelphiaPhillies1980.ttf'); 
+  font-style: normal; 
+}
+
+.AppSixers {
+  font-family: apercu-medium;
+  background-color: #C4CED4;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  transition: 1.3s;
+  height: 100%;
+}
+
+.AppEagles {
+  font-family: apercu-medium;
+  background-color: #ACC0C6;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  transition: 1.3s;
+  height: 100%;
+}
+
+.AppPhillies {
+  font-family: apercu-medium;
+  background-color: #FFFFFF;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  transition: 1.3s;
+  height: 100%;
+}
+
+ul {
+  list-style-type: none;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+ul img {
+  height: 50px;
+  width:auto;
+}
+
+p{
+  width: 100%;
+  margin: 20px 0;
+}
+
+.headline{
+  font-size: calc(30px + 3vmin);
+  width: 100%;
+  margin-bottom: 40px !important;
+}
+
+.App-header-Sixers {
+  width:30%;
+  text-align: left;
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(20px + 2vmin);
+  color: #006BB6;
+  transition: 1.3s;
+}
+
+.App-header-Eagles {
+  width:30%;
+  text-align: left;
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(20px + 2vmin);
+  color: #000000;
+  transition: 1.3s;
+}
+
+.App-header-Phillies {
+  width:30%;
+  text-align: left;
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(20px + 2vmin);
+  color: #E81828;
+  transition: 1.3s;
+}
+
+img{
+  margin-top:30px;
+  width: 100%;
+  transition: 1.3s;
+}
+
+.importantSixers{
+  color: #ED174C;
+  font-family: sixers-font;
+  transition: 1.3s;
+}
+
+.importantEagles{
+  color: #004C54;
+  font-family: eagles-font;
+  transition: 1.3s;
+}
+
+.importantPhillies{
+  color: #002D72;
+  font-family: phillies-font;
+  transition: 1.3s;
+}
+
