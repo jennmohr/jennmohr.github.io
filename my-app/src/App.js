@@ -1,6 +1,5 @@
 import './App.css';
 import { useState } from "react";
-import { Link } from "react-router-dom"; 
 import SixersJenn from "./sixers-jenn.png";
 import EaglesJenn from "./eagles-jenn.png";
 import PhilliesJenn from "./phillies-jenn.png";
