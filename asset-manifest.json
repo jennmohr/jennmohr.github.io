@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/static/css/main.e823ca34.css",
+    "main.js": "/static/js/main.c5662230.js",
+    "static/js/787.28cb0dcd.chunk.js": "/static/js/787.28cb0dcd.chunk.js",
+    "static/media/sixers-jenn.png": "/static/media/sixers-jenn.1b6f01a75e046a78ea3b.png",
+    "static/media/eagles-jenn.png": "/static/media/eagles-jenn.959cecde0006aaca2304.png",
+    "static/media/phillies-jenn.png": "/static/media/phillies-jenn.cabb344fd2b58865a33f.png",
+    "static/media/Eagles-active.png": "/static/media/Eagles-active.1b28eae6acd566461d14.png",
+    "static/media/Phillies-inactive.png": "/static/media/Phillies-inactive.1bc3932a01fe0aa12194.png",
+    "static/media/Eagles-inactive.png": "/static/media/Eagles-inactive.0bcc9054d1fac0167c3c.png",
+    "static/media/Phillies-active.png": "/static/media/Phillies-active.18dded029dc893dbca5f.png",
+    "static/media/Apercu Medium.otf": "/static/media/Apercu Medium.aedaec26a758f9fbd8d4.otf",
+    "static/media/76ers-inactive.png": "/static/media/76ers-inactive.26321b0e396713fa343c.png",
+    "static/media/76ers-active.png": "/static/media/76ers-active.a5360c6e6cbac9c6acec.png",
+    "static/media/itc-clearface-black.otf": "/static/media/itc-clearface-black.089a55bc7bb887ee85a6.otf",
+    "static/media/MLBPhiladelphiaPhillies1980.ttf": "/static/media/MLBPhiladelphiaPhillies1980.7d1289c6b619929665d9.ttf",
+    "static/media/NFLEAGLE.TTF": "/static/media/NFLEAGLE.c8d68288495a540f9ff9.TTF",
+    "static/media/email.png": "/static/media/email.792ef22f5eda5fbc5d93.png",
+    "index.html": "/index.html",
+    "main.e823ca34.css.map": "/static/css/main.e823ca34.css.map",
+    "main.c5662230.js.map": "/static/js/main.c5662230.js.map",
+    "787.28cb0dcd.chunk.js.map": "/static/js/787.28cb0dcd.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e823ca34.css",
+    "static/js/main.c5662230.js"
+  ]
+}
