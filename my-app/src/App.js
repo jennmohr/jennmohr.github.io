@@ -9,6 +9,9 @@ import EaglesActive from "./Eagles-active.png";
 import EaglesInactive from "./Eagles-inactive.png";
 import PhilliesActive from "./Phillies-active.png";
 import PhilliesInactive from "./Phillies-inactive.png";
+import Spotify from "./spotify-logo.png";
+import LinkedIn from "./linkedin.png";
+import Email from "./email.png";
 
 function App() {
   const [sixersImage, setSixersImage] = useState(SixersActive);
@@ -85,15 +88,18 @@ function App() {
           <span className={getImportant()}>Hello, I'm Jenn!</span>
         </p>
         <p>
-          I'm a software engineer from <span className={getImportant()}>Philadelphia, PA</span>. I thrive in front-end development, but strive to become as well-rounded as possible.
+          I'm a software engineer from <span className={getImportant()}>Philadelphia, PA</span>. I work mostly in front-end development, but strive to become as well-rounded as possible.
         </p>
         <p>
-          I currently work as a <span className={getImportant()}>Consultant at Pariveda Solutions</span>.
-        </p>
+          I currently work as a Software Consultant at Pariveda Solutions.
+        Connect with me on <span className={getImportant()}><a href={"https://www.linkedin.com/in/jennmohr/"}>LinkedIn</a></span> or send me 
+        <span className={getImportant()}><a href={"mailto: jennifer@bpmohr.com"}> an email</a></span>.
+      </p>
       </header>
       <header className={getAppHeader()}> 
-        <img src={getImage()}/>
+        <div className="bigImage"><img src={getImage()}/></div>
       </header>
+      
     </div>
   );
 }
